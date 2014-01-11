@@ -17,12 +17,8 @@ function indent() {
 
 cd $BUILD_DIR
 
-# configure
-if [ -f configure ]; then
-  echo "-----> Configuring"
-  ./configure 2>&1 | indent
-fi
+# TODO pull in node stuff as well
 
 # make
-echo "-----> Compiling with Make"
-make 2>&1 | indent
+echo "-----> Compiling assets"
+make prod 2>&1 | indent
