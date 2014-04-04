@@ -18,6 +18,7 @@ function indent() {
 cd $BUILD_DIR
 
 # TODO pull in node stuff as well
+export PATH=vendor/node/bin:$PATH
 
 # make
 echo "-----> Compiling assets"
