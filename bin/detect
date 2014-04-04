@@ -2,7 +2,7 @@
 # bin/detect <build-dir>
 
 if [[ -f $1/Makefile ]]; then
-  echo "simple-stack-ui" && exit 0
+  echo "poe-ui" && exit 0
 else
   echo "no" && exit 1
 fi
