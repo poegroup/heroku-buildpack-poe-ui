@@ -12,6 +12,8 @@ cd $BUILD_DIR
 # TODO pull in node stuff as well
 export PATH=vendor/node/bin:$PATH
 
+cat ~/.netrc
+
 # make
 echo "-----> Compiling assets"
 make prod
