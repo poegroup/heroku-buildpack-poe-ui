@@ -1,17 +1,27 @@
 #!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
 
-set -e
-set -o pipefail
+####### Configure environment
 
-BUILD_DIR=$1
-CACHE_DIR=$2
+set -o errexit    # always exit on error
+set -o errtrace   # trap errors in functions as well
+set -o pipefail   # don't ignore exit codes when piping output
+set -o posix      # more strict failures in subshells
 
-cd $BUILD_DIR
+# Configure directories
+build_dir=$1
+cache_dir=$2
+env_dir=$3
+bp_dir=$(cd $(dirname $0); cd ..; pwd)
 
-# TODO pull in node stuff as well
-export PATH=vendor/node/bin:$PATH
+# Load dependencies
+source $bp_dir/lib/common.sh
+
+# Avoid GIT_DIR leak from previous build steps
+unset GIT_DIR
+
+cd $build_dir
 
 # make
 echo "-----> Compiling assets"
+export_env_dir $env_dir
 make prod
