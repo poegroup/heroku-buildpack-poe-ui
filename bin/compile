@@ -24,4 +24,4 @@ cd $build_dir
 # make
 echo "-----> Compiling assets"
 export_env_dir $env_dir
-make prod
+ASSET_CACHE=$cache_dir make prod
